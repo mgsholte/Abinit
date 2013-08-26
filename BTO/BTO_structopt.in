@@ -4,8 +4,8 @@
 
 #TODO
 ntatom
-xred
-acell
+xred #NB: Ba@(.5,.5,.5); Ti@(0,0,0); O@(.5,0,0)&(0,.5,0)&(0,0,.5)
+acell #BaTiO 3 is tetragonal at room temperature, a = 3.995, c = 4.034 Å
 
 
 ###
