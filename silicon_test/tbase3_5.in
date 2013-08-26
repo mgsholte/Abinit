@@ -13,7 +13,7 @@ shiftk1  0.5 0.5 0.5  # These shifts will be the same for all grids
          0.5 0.0 0.0
          0.0 0.5 0.0
          0.0 0.0 0.5
-ngkpt1  6 6 6  
+ngkpt1   16 16 16
 prtden1  1         # Print the density, for use by dataset 2
 toldfe1  1.0d-9    # This value is way too large for most realistic studies of materials
 
@@ -33,7 +33,7 @@ enunit2  1             # Will output the eigenenergies in eV
 
 
 #Definition of the unit cell
-acell 3*10.218         # This is equivalent to   10.217 10.217 10.217
+acell 3*10.216         # This is equivalent to   10.216 10.216 10.216
 rprim  0.0  0.5  0.5   # FCC primitive vectors (to be scaled by acell)
        0.5  0.0  0.5   
        0.5  0.5  0.0
