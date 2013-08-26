@@ -1,18 +1,31 @@
+### Crystalline BTO; calculation of physical structure contstants
+
 ###
 # Structure Specification Vars
 ###
 
-#TODO
-ntatom
-xred #NB: Ba@(.5,.5,.5); Ti@(0,0,0); O@(.5,0,0)&(0,.5,0)&(0,0,.5)
-acell #BaTiO 3 is tetragonal at room temperature, a = 3.995, c = 4.034 Å
+## Unit Cell
+#rprim DEFAULT
+acell 3*4 angstrom # a = 3.995, c = 4.034 Ã
 
+## Atom Positions
+ntypat 3        # Ba, Ti, O, resp.
+znucl 56 22 8
+
+natom 5
+typat 1 2 3 3 3 # Ba, Ti, 3O
+xred
+  0.0 0.0 0.0   # Ba
+  1/2 1/2 1/2   # Ti
+  0.0 1/2 1/2   # O 1 yz
+  1/2 0.0 1/2   # O 2 xz
+  1/2 1/2 0.0   # O 3 xy
 
 ###
 # Structure Optimization Vars
 ###
 
-ionmov 2        # consider 3 instead if there are fewer than 5 DoF in the struct opt
+ionmov 2        # consider 3 instead if there are fewer than 5 DoF to consider
 ntime 15        # the # of time step to use in the optimization cycle
 tolmxf 5.0e-6   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
 toldff 5.0e-7   # see above but for the scf cycle rather than the relaxation cycle
