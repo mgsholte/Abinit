@@ -1,0 +1,28 @@
+###
+# Structure Specification Vars
+###
+
+#TODO
+ntatom
+xred
+acell
+
+
+###
+# Structure Optimization Vars
+###
+
+ionmov 2        # consider 3 instead if there are fewer than 5 DoF in the struct opt
+ntime 15        # the # of time step to use in the optimization cycle
+tolmxf 5.0e-6   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
+toldff 5.0e-7   # see above but for the scf cycle rather than the relaxation cycle
+
+#TODO: optcell 1 # after running once to determine ionic positions. see notes in 'optcell'
+#TODO: see man on 'ecutsm', 'dilatmx', 'strfact', 'toldff'/'toldfe'.
+
+###
+# SCF Cycle Vars
+###
+
+# iscf 7        # default should be fine
+# toldff 5.0e-7 # defined in another section
