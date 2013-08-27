@@ -1,6 +1,6 @@
-tbase3_5.in
-tbase3_5.out
+tbase3_1.in
+tbase3_1.out
 in_tbase3
 out_tbase3
-/scratch/02288/mgs763/tbase3
+/work/02288/mgs763/tmp/abinit/tmp
 /work/02288/mgs763/abinit-7.2.2_src/tests/Psps_for_tests/14si.pspnc

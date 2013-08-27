@@ -1,4 +1,7 @@
 out_*
 in_*
 jobscript
+job_*
 batch*
+log
+*.dbs
