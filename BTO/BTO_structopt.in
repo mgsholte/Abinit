@@ -1,12 +1,14 @@
 ### Crystalline BTO; calculation of physical structure contstants
 
+ndtset 2        # optimize atom pos followed by lattice params
+
 ###
 # Structure Specification Vars
 ###
 
 ## Unit Cell
 #rprim DEFAULT
-acell 3*4 angstrom # a = 3.995, c = 4.034 Ã
+acell 3.995 3.995 4.034 angstrom # a = 3.995, c = 4.034 Ã
 
 ## Atom Positions
 ntypat 3        # Ba, Ti, O, resp.
@@ -16,26 +18,51 @@ natom 5
 typat 1 2 3 3 3 # Ba, Ti, 3O
 xred
   0.0 0.0 0.0   # Ba
-  1/2 1/2 1/2   # Ti
-  0.0 1/2 1/2   # O 1 yz
-  1/2 0.0 1/2   # O 2 xz
-  1/2 1/2 0.0   # O 3 xy
+  1/2 1/2 0.51  # Ti
+  0.0 1/2 0.49  # O 1 yz
+  1/2 0.0 0.49  # O 2 xz
+  1/2 1/2 -0.01 # O 3 xy
+
+getcell2 -1
+getxcart2 -1     # 2nd dataset uses coords from 1st set
 
 ###
 # Structure Optimization Vars
 ###
 
 ionmov 2        # consider 3 instead if there are fewer than 5 DoF to consider
-ntime 15        # the # of time step to use in the optimization cycle
-tolmxf 5.0e-6   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
-toldff 5.0e-7   # see above but for the scf cycle rather than the relaxation cycle
+ntime 30        # the # of time step to use in the optimization cycle
+tolmxf 5.0e-4   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
+toldff 5.0e-5   # see above but for the scf cycle rather than the relaxation cycle
 
-#TODO: optcell 1 # after running once to determine ionic positions. see notes in 'optcell'
 #TODO: see man on 'ecutsm', 'dilatmx', 'strfact', 'toldff'/'toldfe'.
+optcell1 0      # optimize atomic positions without relaxing lattice params
+optcell2 3      # optimize lattice params fixing positions
+
+ecutsm2 0.5      # recommended value
+dilatmx2 1.1     # acell is within 10% of correct value already
 
 ###
 # SCF Cycle Vars
 ###
 
-# iscf 7        # default should be fine
+#iscf 2         # simple mixing of the potential
+nstep 50        # Maximal number of SCF cycles
 # toldff 5.0e-7 # defined in another section
+ecut 80
+
+diemac 12
+
+##Definition of the k-point grid
+kptopt 1
+ngkpt 6 6 6
+nshiftk 1
+shiftk  0.5 0.5 0.5
+
+###
+# I/O Vars
+###
+
+prtden 0
+prteig 0
+prtwf 1
