@@ -33,11 +33,11 @@ getxcart2 1     # 2nd dataset uses coords from 1st set
 
 ionmov 2        # consider 3 instead if there are fewer than 5 DoF to consider
 
-natfix1 2       # Dont let the barium move while relaxing ion positions
-iatfix1 1 5     # see above
+natfix1 1       # Dont let the barium move while relaxing ion positions
+iatfix1 1       # see above
 
 ntime 40        # the # of time step to use in the optimization cycle
-tolmxf 1.0e-5   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
+tolmxf 1.0e-4   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
 
 #TODO: see man on 'ecutsm', 'dilatmx', 'strfact'
 optcell1 0      # optimize atomic positions without relaxing lattice params
@@ -52,8 +52,8 @@ dilatmx2 1.07   # acell should be within 7% of correct value already
 
 iscf 7          # pulay mixing of the potential
 nstep 100       # Maximum number of SCF cycles
-toldfe 1.0e-8   # dont use toldff since the forces converge poorly and are expected to be crude anyway
-ecut 49.74      # probably low, but I don't need great results
+toldfe 7.0e-8   # dont use toldff since the forces converge poorly and are expected to be crude anyway
+ecut 35         # probably low, but I don't need great results
 #nband 20       # let Abinit determine this automatically
 
 diemac 4000     # too high?

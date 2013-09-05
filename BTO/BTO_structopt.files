@@ -3,6 +3,6 @@ BTO_structopt.out
 in_structopt
 out_structopt
 /work/02288/mgs763/tmp/abinit/tmp
-../psps/56ba_LDA_ENC_Teter.psp.mod
-../psps/22ti_LDA_ENC_Teter.psp.mod
-../psps/8o_LDA_ENC_Teter.psp.mod
+../psps/56ba_LDA_TM.pspnc
+../psps/22ti_LDA_TM.pspnc
+../psps/8o_LDA_TM.pspnc
