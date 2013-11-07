@@ -35,7 +35,7 @@ ionmov 2        # consider 3 instead if there are fewer than 5 DoF to consider
 natfix 1        # Dont let the barium move while relaxing ion positions
 iatfix 1        # see above
 
-ntime 20        # the # of time step to use in the optimization cycle
+ntime 25        # the # of time step to use in the optimization cycle
 tolmxf 1.0e-5   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
 
 optcell1 0      # optimize atomic positions without relaxing lattice params
@@ -78,11 +78,12 @@ ngkpt 8 8 8
 # I/O Vars
 ###
 
+restartxf -1     # restart any previous calculation attempts
+
 prteig 0
 
 prtden1 1        # print density and wavefcn of DS1 for use in DS2
 prtwf1 1
-restartxf -1
 
 prtden2 0        # read den,wvfcn from DS1. don't bother printing again
 prtwf2 0

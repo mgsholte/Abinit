@@ -35,7 +35,7 @@ ionmov 2        # consider 3 instead if there are fewer than 5 DoF to consider
 natfix 1        # Dont let the barium move while relaxing ion positions
 iatfix 1        # see above
 
-ntime 15        # the # of time step to use in the optimization cycle
+ntime 25        # the # of time step to use in the optimization cycle
 tolmxf 1.0e-5   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
 
 optcell1 0      # optimize atomic positions without relaxing lattice params
@@ -54,7 +54,7 @@ iscf 7          # pulay mixing of the potential
 nstep 150       # Maximum number of SCF cycles
 toldfe 1.0e-7   # TODO: too high? too low?
 #toldff 1.0e-7   
-ecut 22
+ecut 20
 
 diemac 4000     # too high?
 
@@ -63,26 +63,6 @@ diemac 4000     # too high?
 #nbdbuf 2
 kptopt 1
 ngkpt 4 4 4
-# default nshiftk, shiftk
-
-#nkpt 14
-#kpt 
-#   0.0  0.0  0.0  # Gamma
-#   1/4  1/4  1/4  # Demkov's suggestion
-#   1/2  0.0  0.0  # X
-#  -1/2  0.0  0.0  # X
-#   1/2  1/2  0.0  # M
-#  -1/2 -1/2  0.0  # M
-#   1/2 -1/2  0.0  # M
-#  -1/2  1/2  0.0  # M
-#   0.0  0.0  1/2  # selected for some z-comp pts
-#   0.0  0.0 -1/2  # ditto
-#   1/2  0.0  1/2  # ditto
-#   1/2  0.0 -1/2  # ditto
-#  -1/2  0.0  1/2  # ditto
-#  -1/2  0.0 -1/2  # ditto
-#
-#istwfk 14*2
 
 ###
 # Parallelization Vars
@@ -97,6 +77,8 @@ ngkpt 4 4 4
 ###
 # I/O Vars
 ###
+
+restartxf = -1   # resume any previous calculation attempts
 
 prteig  0
 
