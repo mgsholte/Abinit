@@ -1,0 +1,9 @@
+#!/bin/bash
+
+#get srun session length. default is 1.0 hrs
+read -p "How many hours? " -e -i 01 hrs
+read -p "How many mins? " -e -i 00 mins
+# get number of cores to use. defaults to 16 (= 1 node worth)
+read -p "How many cores? " -e -i 16 ncores
+
+srun --pty -A NewMaterials -p development -t $hrs:$mins:00 -n $ncores /bin/bash -l

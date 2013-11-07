@@ -1,7 +1,7 @@
 ### Crystalline BTO; calculation of physical structure contstants
 
 ndtset 1        # optimize atom pos followed by lattice params
-jdtset 1        # cant read in part 2
+jdtset 1 
 
 ###
 # Structure Specification Vars
@@ -9,16 +9,16 @@ jdtset 1        # cant read in part 2
 
 ## Unit Cell
 #rprim DEFAULT
-acell 3.96 3.96 4.0 angstrom 
+acell 3*3.9 angstrom
 
 ## Atom Positions
-ntypat 3        # Ba, Ti, O, resp.
-znucl 56 22 8
+ntypat 3        # Sr, Ti, O, resp.
+znucl 38 22 8
 
 natom 5
-typat 1 2 3*3   # Ba, Ti, 3O
+typat 1 2 3*3   # Sr, Ti, 3O
 xred
-  0.0 0.0 0.0   # Ba
+  0.0 0.0 0.0   # Sr
   1/2 1/2 0.505 # Ti
   0.0 1/2 1/2   # O 1 yz
   1/2 0.0 1/2   # O 2 xz
@@ -35,7 +35,7 @@ ionmov 2        # consider 3 instead if there are fewer than 5 DoF to consider
 natfix 1        # Dont let the barium move while relaxing ion positions
 iatfix 1        # see above
 
-ntime 15        # the # of time step to use in the optimization cycle
+ntime 20        # the # of time step to use in the optimization cycle
 tolmxf 1.0e-5   # force tolerance below which relaxation itrs stop. i.e., can end calc before 'ntime' itrs are reached. In Ha/Bohr
 
 optcell1 0      # optimize atomic positions without relaxing lattice params
@@ -50,39 +50,19 @@ dilatmx2 1.07   # acell should be within 7% of correct value already
 # SCF Cycle Control
 ###
 
-iscf 7          # pulay mixing of the potential
+iscf 7          # simple mixing of the potential
 nstep 150       # Maximum number of SCF cycles
-toldfe 1.0e-7   # TODO: too high? too low?
+toldfe 1.0e-6   # TODO: too high? too low?
 #toldff 1.0e-7   
-ecut 22
+ecut 400 ev     # TODO: too low?
 
-diemac 4000     # too high?
+diemac 5        # tried using 3000, 300, 30 already with no success
 
 ##Definition of the k-point grid
 #nband 18
 #nbdbuf 2
 kptopt 1
-ngkpt 4 4 4
-# default nshiftk, shiftk
-
-#nkpt 14
-#kpt 
-#   0.0  0.0  0.0  # Gamma
-#   1/4  1/4  1/4  # Demkov's suggestion
-#   1/2  0.0  0.0  # X
-#  -1/2  0.0  0.0  # X
-#   1/2  1/2  0.0  # M
-#  -1/2 -1/2  0.0  # M
-#   1/2 -1/2  0.0  # M
-#  -1/2  1/2  0.0  # M
-#   0.0  0.0  1/2  # selected for some z-comp pts
-#   0.0  0.0 -1/2  # ditto
-#   1/2  0.0  1/2  # ditto
-#   1/2  0.0 -1/2  # ditto
-#  -1/2  0.0  1/2  # ditto
-#  -1/2  0.0 -1/2  # ditto
-#
-#istwfk 14*2
+ngkpt 8 8 8
 
 ###
 # Parallelization Vars
@@ -98,14 +78,15 @@ ngkpt 4 4 4
 # I/O Vars
 ###
 
-prteig  0
+prteig 0
 
 prtden1 1        # print density and wavefcn of DS1 for use in DS2
-prtwf1  1
+prtwf1 1
+restartxf -1
 
 prtden2 0        # read den,wvfcn from DS1. don't bother printing again
-prtwf2  0
-#getden2 1       # this wasnt working, probably since the 1st DS fails
+prtwf2 0
+#getden2 1
 #getwfk2 1
 
 ###   ###
